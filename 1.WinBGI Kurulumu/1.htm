@@ -1,0 +1,1060 @@
+<html>
+
+<head>
+<meta http-equiv=Content-Type content="text/html; charset=Windows-1254">
+<meta name=Generator content="Microsoft Word 12 (filtered)">
+<title>1. WinBGI Kurulumu</title>
+<style>
+<!--
+ /* Font Definitions */
+ @font-face
+	{font-family:Wingdings;
+	panose-1:5 0 0 0 0 0 0 0 0 0;}
+@font-face
+	{font-family:"Cambria Math";
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Cambria;
+	panose-1:2 4 5 3 5 4 6 3 2 4;}
+@font-face
+	{font-family:Calibri;
+	panose-1:2 15 5 2 2 2 4 3 2 4;}
+@font-face
+	{font-family:Tahoma;
+	panose-1:2 11 6 4 3 5 4 4 2 4;}
+ /* Style Definitions */
+ p.MsoNormal, li.MsoNormal, div.MsoNormal
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	font-style:italic;}
+h1
+	{mso-style-link:"Başlık 1 Char";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;}
+h1.CxSpFirst
+	{mso-style-link:"Başlık 1 Char";
+	margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;}
+h1.CxSpMiddle
+	{mso-style-link:"Başlık 1 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;}
+h1.CxSpLast
+	{mso-style-link:"Başlık 1 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;}
+h2
+	{mso-style-link:"Başlık 2 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:7.2pt;
+	line-height:112%;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;}
+h2.CxSpFirst
+	{mso-style-link:"Başlık 2 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:7.2pt;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;}
+h2.CxSpMiddle
+	{mso-style-link:"Başlık 2 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:7.2pt;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;}
+h2.CxSpLast
+	{mso-style-link:"Başlık 2 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:7.2pt;
+	line-height:112%;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;}
+h3
+	{mso-style-link:"Başlık 3 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:7.2pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h3.CxSpFirst
+	{mso-style-link:"Başlık 3 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:7.2pt;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h3.CxSpMiddle
+	{mso-style-link:"Başlık 3 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:7.2pt;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h3.CxSpLast
+	{mso-style-link:"Başlık 3 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:7.2pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h4
+	{mso-style-link:"Başlık 4 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Courier New";
+	font-weight:normal;}
+h5
+	{mso-style-link:"Başlık 5 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:4.3pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h5.CxSpFirst
+	{mso-style-link:"Başlık 5 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:4.3pt;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h5.CxSpMiddle
+	{mso-style-link:"Başlık 5 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:4.3pt;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h5.CxSpLast
+	{mso-style-link:"Başlık 5 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:4.3pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+h6
+	{mso-style-link:"Başlık 6 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:normal;
+	font-style:italic;}
+h6.CxSpFirst
+	{mso-style-link:"Başlık 6 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:normal;
+	font-style:italic;}
+h6.CxSpMiddle
+	{mso-style-link:"Başlık 6 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:normal;
+	font-style:italic;}
+h6.CxSpLast
+	{mso-style-link:"Başlık 6 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:normal;
+	font-style:italic;}
+p.MsoHeading7, li.MsoHeading7, div.MsoHeading7
+	{mso-style-link:"Başlık 7 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+p.MsoHeading7CxSpFirst, li.MsoHeading7CxSpFirst, div.MsoHeading7CxSpFirst
+	{mso-style-link:"Başlık 7 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+p.MsoHeading7CxSpMiddle, li.MsoHeading7CxSpMiddle, div.MsoHeading7CxSpMiddle
+	{mso-style-link:"Başlık 7 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+p.MsoHeading7CxSpLast, li.MsoHeading7CxSpLast, div.MsoHeading7CxSpLast
+	{mso-style-link:"Başlık 7 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+p.MsoHeading8, li.MsoHeading8, div.MsoHeading8
+	{mso-style-link:"Başlık 8 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading8CxSpFirst, li.MsoHeading8CxSpFirst, div.MsoHeading8CxSpFirst
+	{mso-style-link:"Başlık 8 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading8CxSpMiddle, li.MsoHeading8CxSpMiddle, div.MsoHeading8CxSpMiddle
+	{mso-style-link:"Başlık 8 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading8CxSpLast, li.MsoHeading8CxSpLast, div.MsoHeading8CxSpLast
+	{mso-style-link:"Başlık 8 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading9, li.MsoHeading9, div.MsoHeading9
+	{mso-style-link:"Başlık 9 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading9CxSpFirst, li.MsoHeading9CxSpFirst, div.MsoHeading9CxSpFirst
+	{mso-style-link:"Başlık 9 Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading9CxSpMiddle, li.MsoHeading9CxSpMiddle, div.MsoHeading9CxSpMiddle
+	{mso-style-link:"Başlık 9 Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoHeading9CxSpLast, li.MsoHeading9CxSpLast, div.MsoHeading9CxSpLast
+	{mso-style-link:"Başlık 9 Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:5.0pt;
+	margin-left:0cm;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+p.MsoCaption, li.MsoCaption, div.MsoCaption
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:120%;
+	font-size:9.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#0075A2;
+	font-weight:bold;
+	font-style:italic;}
+p.MsoTitle, li.MsoTitle, div.MsoTitle
+	{mso-style-name:"Konu Başlığı\,Sayfa Başlığı";
+	mso-style-link:"Konu Başlığı Char\,Sayfa Başlığı Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	text-align:center;
+	background:#009DD9;
+	border:none;
+	padding:0cm;
+	font-size:20.0pt;
+	font-family:"Cambria","serif";
+	color:white;
+	letter-spacing:.5pt;}
+p.MsoSubtitle, li.MsoSubtitle, div.MsoSubtitle
+	{mso-style-link:"Alt Konu Başlığı Char";
+	margin-top:10.0pt;
+	margin-right:0cm;
+	margin-bottom:45.0pt;
+	margin-left:0cm;
+	text-align:center;
+	border:none;
+	padding:0cm;
+	font-size:12.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-style:italic;}
+a:link, span.MsoHyperlink
+	{color:#E2D700;
+	text-decoration:underline;}
+a:visited, span.MsoHyperlinkFollowed
+	{color:#85DFD0;
+	text-decoration:underline;}
+strong
+	{letter-spacing:0pt;}
+em
+	{font-family:"Cambria","serif";
+	color:#009DD9;
+	border:solid #C4EEFF 2.25pt;
+	padding:0cm;
+	background:#C4EEFF;
+	font-weight:bold;}
+p.MsoAcetate, li.MsoAcetate, div.MsoAcetate
+	{mso-style-link:"Balon Metni Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:8.0pt;
+	font-family:"Tahoma","sans-serif";
+	font-style:italic;}
+p.MsoNoSpacing, li.MsoNoSpacing, div.MsoNoSpacing
+	{mso-style-name:"Aralık Yok\,Aralık Yok Anlatım";
+	mso-style-link:"Aralık Yok Char\,Aralık Yok Anlatım Char";
+	margin:0cm;
+	margin-bottom:.0001pt;
+	font-size:12.0pt;
+	font-family:"Calibri","sans-serif";}
+p.MsoListParagraph, li.MsoListParagraph, div.MsoListParagraph
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	font-style:italic;}
+p.MsoListParagraphCxSpFirst, li.MsoListParagraphCxSpFirst, div.MsoListParagraphCxSpFirst
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	font-style:italic;}
+p.MsoListParagraphCxSpMiddle, li.MsoListParagraphCxSpMiddle, div.MsoListParagraphCxSpMiddle
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:36.0pt;
+	margin-bottom:.0001pt;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	font-style:italic;}
+p.MsoListParagraphCxSpLast, li.MsoListParagraphCxSpLast, div.MsoListParagraphCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:36.0pt;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	font-style:italic;}
+p.MsoQuote, li.MsoQuote, div.MsoQuote
+	{mso-style-link:"Tırnak Char";
+	margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:10.0pt;
+	margin-left:0cm;
+	line-height:120%;
+	font-size:10.0pt;
+	font-family:"Calibri","sans-serif";
+	color:#0075A2;}
+p.MsoIntenseQuote, li.MsoIntenseQuote, div.MsoIntenseQuote
+	{mso-style-link:"Keskin Tırnak Char";
+	margin-top:0cm;
+	margin-right:108.0pt;
+	margin-bottom:10.0pt;
+	margin-left:108.0pt;
+	text-align:center;
+	line-height:125%;
+	border:none;
+	padding:0cm;
+	font-size:10.0pt;
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoSubtleEmphasis
+	{font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+span.MsoIntenseEmphasis
+	{font-family:"Cambria","serif";
+	color:white;
+	border:solid #009DD9 2.25pt;
+	padding:0cm;
+	background:#009DD9;
+	font-weight:bold;
+	font-style:italic;
+	text-decoration:none;
+	vertical-align:baseline;}
+span.MsoSubtleReference
+	{font-variant:small-caps;
+	color:#009DD9;
+	font-style:italic;}
+span.MsoIntenseReference
+	{font-variant:small-caps;
+	color:#009DD9;
+	font-weight:bold;
+	font-style:italic;}
+span.MsoBookTitle
+	{font-family:"Cambria","serif";
+	font-variant:small-caps;
+	color:#0075A2;
+	font-weight:bold;
+	font-style:italic;
+	text-decoration:underline;}
+p.MsoTocHeading, li.MsoTocHeading, div.MsoTocHeading
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-weight:bold;}
+p.MsoTocHeadingCxSpFirst, li.MsoTocHeadingCxSpFirst, div.MsoTocHeadingCxSpFirst
+	{margin-top:6.0pt;
+	margin-right:0cm;
+	margin-bottom:0cm;
+	margin-left:0cm;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-weight:bold;}
+p.MsoTocHeadingCxSpMiddle, li.MsoTocHeadingCxSpMiddle, div.MsoTocHeadingCxSpMiddle
+	{margin:0cm;
+	margin-bottom:.0001pt;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-weight:bold;}
+p.MsoTocHeadingCxSpLast, li.MsoTocHeadingCxSpLast, div.MsoTocHeadingCxSpLast
+	{margin-top:0cm;
+	margin-right:0cm;
+	margin-bottom:6.0pt;
+	margin-left:0cm;
+	line-height:112%;
+	background:#C4EEFF;
+	border:none;
+	padding:0cm;
+	font-size:11.0pt;
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-weight:bold;}
+span.Balk1Char
+	{mso-style-name:"Başlık 1 Char";
+	mso-style-link:"Başlık 1";
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	background:#C4EEFF;
+	font-weight:bold;}
+span.Balk2Char
+	{mso-style-name:"Başlık 2 Char";
+	mso-style-link:"Başlık 2";
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:bold;}
+span.Balk3Char
+	{mso-style-name:"Başlık 3 Char";
+	mso-style-link:"Başlık 3";
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:bold;
+	font-style:italic;}
+span.Balk4Char
+	{mso-style-name:"Başlık 4 Char";
+	mso-style-link:"Başlık 4";
+	font-family:"Courier New";}
+span.Balk5Char
+	{mso-style-name:"Başlık 5 Char";
+	mso-style-link:"Başlık 5";
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-weight:bold;
+	font-style:italic;}
+span.Balk6Char
+	{mso-style-name:"Başlık 6 Char";
+	mso-style-link:"Başlık 6";
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+span.Balk7Char
+	{mso-style-name:"Başlık 7 Char";
+	mso-style-link:"Başlık 7";
+	font-family:"Cambria","serif";
+	color:#0075A2;
+	font-style:italic;}
+span.Balk8Char
+	{mso-style-name:"Başlık 8 Char";
+	mso-style-link:"Başlık 8";
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+span.Balk9Char
+	{mso-style-name:"Başlık 9 Char";
+	mso-style-link:"Başlık 9";
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-style:italic;}
+span.KonuBalChar
+	{mso-style-name:"Konu Başlığı Char\,Sayfa Başlığı Char";
+	mso-style-link:"Konu Başlığı\,Sayfa Başlığı";
+	font-family:"Cambria","serif";
+	color:white;
+	letter-spacing:.5pt;
+	background:#009DD9;}
+span.AltKonuBalChar
+	{mso-style-name:"Alt Konu Başlığı Char";
+	mso-style-link:"Alt Konu Başlığı";
+	font-family:"Cambria","serif";
+	color:#004D6C;
+	font-style:italic;}
+span.TrnakChar
+	{mso-style-name:"Tırnak Char";
+	mso-style-link:Tırnak;
+	color:#0075A2;}
+span.KeskinTrnakChar
+	{mso-style-name:"Keskin Tırnak Char";
+	mso-style-link:"Keskin Tırnak";
+	font-family:"Cambria","serif";
+	color:#009DD9;
+	font-weight:bold;
+	font-style:italic;}
+span.AralkYokChar
+	{mso-style-name:"Aralık Yok Char\,Aralık Yok Anlatım Char";
+	mso-style-link:"Aralık Yok\,Aralık Yok Anlatım";}
+span.BalonMetniChar
+	{mso-style-name:"Balon Metni Char";
+	mso-style-link:"Balon Metni";
+	font-family:"Tahoma","sans-serif";
+	font-style:italic;}
+.MsoPapDefault
+	{margin-bottom:10.0pt;
+	line-height:120%;}
+@page Section1
+	{size:595.3pt 841.9pt;
+	margin:70.85pt 70.85pt 70.85pt 70.85pt;}
+div.Section1
+	{page:Section1;}
+ /* List Definitions */
+ ol
+	{margin-bottom:0cm;}
+ul
+	{margin-bottom:0cm;}
+-->
+</style>
+
+</head>
+
+<body lang=TR link="#E2D700" vlink="#85DFD0">
+
+<div class=Section1>
+
+<div style='border-top:solid #009DD9 6.0pt;border-left:none;border-bottom:solid #009DD9 6.0pt;
+border-right:none;padding:0cm 0cm 0cm 0cm;background:#009DD9'>
+
+<p class=MsoTitle>1.  WinBGI (graphics.h) Kurulumu</p>
+
+</div>
+
+<p class=MsoNoSpacing style='text-indent:35.4pt'>Merhaba arkadaşlar şimdi
+sizlere WinBGI ‘nin kurulumunu anlatacağım. WinBGI <a
+href="http://www.cs.colorado.edu/" target="_blank">Colarado Üniversitesinin</a> geliştirdiği
+bir kütüphanedir.</p>
+
+<p class=MsoNoSpacing style='text-indent:35.4pt'>Bu başlıkta öğreneceğimiz
+konular;</p>
+
+<p class=MsoNoSpacing style='margin-left:53.25pt;text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.cs.colorado.edu/~main/bgi/dev-c++/devcpp-4.9.9.2_setup.exe">Bu
+bağlantıdan</a> Dev C++ 4.9.9.2 (Beta 5)’ i indirip kuracağız.</p>
+
+<p class=MsoNoSpacing style='margin-left:53.25pt;text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="ftp://www.cs.colorado.edu/~main/bgi/dev-c++/graphics.h">Bu bağlantıdan</a>
+graphics.h kütüphanesini farklı kaydet deyip, indirip kuracağız.</p>
+
+<p class=MsoNoSpacing style='margin-left:53.25pt;text-indent:-18.0pt'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.cs.colorado.edu/~main/bgi/dev-c++/libbgi.a">Bu bağlantıdan</a>
+libbgi.a lib dosyasını farklı kaydet deyip, indirip kurucağız.</p>
+
+<p class=MsoNoSpacing style='margin-left:53.25pt;text-indent:-18.0pt'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Projemize
+graphics.h kütüphanesi ekleyeceğiz.</p>
+
+<div style='border:solid #009DD9 1.0pt;border-left:solid #009DD9 6.0pt;
+padding:0cm 4.0pt 0cm 2.0pt;margin-left:7.2pt;margin-right:0cm'>
+
+<h2 style='margin-left:0cm;line-height:normal'>Dev C++ 4.9.9.2’ nin kurulumu</h2>
+
+</div>
+
+<p class=MsoNoSpacing>Dev C++’ ın kurulumu gayet basit ve kolaydır.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.cs.colorado.edu/~main/bgi/dev-c++/devcpp-4.9.9.2_setup.exe">Bu
+bağlantıdan</a> Dev C++ 4.9.9.2’ yi indirin ve açın.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing>
+
+<table cellpadding=0 cellspacing=0 align=left>
+ <tr>
+  <td width=14 height=0></td>
+ </tr>
+ <tr>
+  <td></td>
+  <td><img width=480 height=191 src="1_dosyalar/image001.png"></td>
+ </tr>
+</table>
+
+<br clear=ALL>
+</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Tamama
+tıklayıp devam edin.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><img border=0 width=329 height=189
+src="1_dosyalar/image002.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Dili
+Türkçe Seçip Devam Edelim.</p>
+
+<p class=MsoNoSpacing><img border=0 width=540 height=429
+src="1_dosyalar/image003.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Lisans
+Sözleşmesini kabul edin.</p>
+
+<p class=MsoNoSpacing><img border=0 width=536 height=417 id="Resim 4"
+src="1_dosyalar/image004.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Kurulum
+şeklini Full Seçip Devam &gt; a tıklayın.</p>
+
+<p class=MsoNoSpacing><img border=0 width=536 height=418
+src="1_dosyalar/image005.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Kurulum
+yerini seçip (C:\Dev-Cpp önerilir) Kur’ a tıklayın.</p>
+
+<p class=MsoNoSpacing><img border=0 width=535 height=422
+src="1_dosyalar/image006.png"> </p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Programınız
+kurulana kadar bekleyin.</p>
+
+<p class=MsoNoSpacing><img border=0 width=527 height=412 id="Resim 7"
+src="1_dosyalar/image007.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>8.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>“Dev-C++’
+ı bütün kullanıcılara yüklemek ister misiniz?” sorusuna Evet(Önerilen) deyip
+devam edin.</p>
+
+<p class=MsoNoSpacing><img border=0 width=539 height=418 id="Resim 8"
+src="1_dosyalar/image008.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>9.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Dev-C++
+programını çalıştır’ ı seçip kurulumu bitirin.</p>
+
+<p class=MsoNoSpacing><img border=0 width=721 height=349 id="Resim 9"
+src="1_dosyalar/image009.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>10.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span>Dili Türkçe seçip Next’ e
+tıklayın.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><img border=0 width=722 height=350 id="Resim 10"
+src="1_dosyalar/image010.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>11.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span>“Yes, I want to use this
+feature” seçip Next deyin.</p>
+
+<p class=MsoNoSpacing><img border=0 width=720 height=346 id="Resim 11"
+src="1_dosyalar/image011.png"></p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>12.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span>“Yes, create the cache now”
+ı seçip next deyin.</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>13.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span> Bir süre bekledikten sonra
+karşınıza gelicek olan ekranda. Nexte basın</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>14.<span
+style='font:7.0pt "Times New Roman"'>&nbsp; </span>Ve Dev-C++ kullanıma hazır.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:18.0pt'><img border=0 width=955
+height=531 id="Resim 12" src="1_dosyalar/image012.png"></p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<div style='border:solid #009DD9 1.0pt;border-left:solid #009DD9 6.0pt;
+padding:0cm 4.0pt 0cm 2.0pt;margin-left:7.2pt;margin-right:0cm'>
+
+<h2 style='margin-left:0cm;line-height:normal'>WinBGI Kurulumu</h2>
+
+</div>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.cs.colorado.edu/~main/bgi/dev-c++/graphics.h"><b>“graphics.h”</b></a>
+dosyasını Dev C++’ ı kurduğunuz yerin içindeki <b>“include”</b> klasörünün
+içine kopyalayın. (Örnek : “C:\Dev-Cpp\include”)</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.cs.colorado.edu/~main/bgi/dev-c++/libbgi.a"><b>“libbgi.a”</b></a>
+dosyasını ise  Dev C++’ ı kurduğunuz yerin içindeki <b>“lib”</b> klasörünün
+içine kopyalayın. (Örnek :  “C:\Dev-Cpp\lib”) </p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<div style='border:solid #009DD9 1.0pt;border-left:solid #009DD9 6.0pt;
+padding:0cm 4.0pt 0cm 2.0pt;margin-left:7.2pt;margin-right:0cm'>
+
+<h2 style='margin-left:0cm'>Projemize WinBGI ekleme</h2>
+
+</div>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><img border=0 width=482 height=414 id="Resim 2"
+src="1_dosyalar/image013.png"></p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Dev
+C++’ ı açın.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>2.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Dosya
+-&gt; Yeni -&gt; Proje’ yi seçin.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><img border=0 width=509 height=288 id="Resim 3"
+src="1_dosyalar/image014.png"></p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>3.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Konsol
+Uygulamasını ve C++ Projesini seçip Tamam’ a tıklayın.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>4.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Proje
+dosyasını kaydedin ve şu örnek kodları yazınız.</p>
+
+<p class=MsoNoSpacing style='margin-left:21.3pt'>&nbsp;</p>
+
+<div style='border:solid windowtext 1.0pt;padding:1.0pt 4.0pt 1.0pt 4.0pt;
+background:#D9D9D9'>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>#include &lt;graphics.h&gt;</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>int main()</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>{&nbsp;</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; initwindow(400,300, &quot;2. İlk
+Penceremiz&quot;);</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; putpixel(200,200, COLOR(255,0,0));&nbsp;</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; line(50,150,50,50);</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; line(50,50,125,150);</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; line(125,150,125,50);</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; while(!kbhit());</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; closegraph();</span></h4>
+
+<h4 style='background:#D9D9D9;border:none;padding:0cm'><span style='font-size:
+14.0pt;color:black'>&nbsp;&nbsp;&nbsp; return 0;</span></h4>
+
+<p class=MsoNoSpacing style='background:#D9D9D9;border:none;padding:0cm'><span
+style='font-size:14.0pt;font-family:"Courier New";color:black'>}</span></p>
+
+</div>
+
+<p class=MsoNoSpacing><span style='font-size:13.5pt;font-family:"Courier New";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing><span style='font-size:13.5pt;font-family:"Courier New";
+color:black'><img border=0 width=705 height=400 id="Resim 5"
+src="1_dosyalar/image015.png"></span></p>
+
+<p class=MsoNoSpacing><span style='font-size:13.5pt;font-family:"Courier New";
+color:black'>&nbsp;</span></p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>5.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Proje
+-&gt; Proje Ayarları’ na tıklayın.</p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing><img border=0 width=538 height=401 id="Resim 6"
+src="1_dosyalar/image016.png"></p>
+
+<p class=MsoNoSpacing>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>6.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Parametreler
+sekmesinin içindeki Linker(Bağlayıcılar) kısmına</p>
+
+<p class=MsoNoSpacing style='margin-left:21.3pt'>-lbgi -lgdi32 -lcomdlg32
+-luuid -loleaut32 -lole32</p>
+
+<p class=MsoNoSpacing style='margin-left:21.3pt'>yazın.</p>
+
+<p class=MsoNoSpacing style='margin-left:21.3pt'>&nbsp;</p>
+
+<p class=MsoNoSpacing style='margin-left:39.3pt;text-indent:-18.0pt'>7.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span>Projeniz
+derlenmeye hazır.</p>
+
+<div style='border:solid #009DD9 1.0pt;border-left:solid #009DD9 6.0pt;
+padding:0cm 4.0pt 0cm 2.0pt;margin-left:7.2pt;margin-right:0cm'>
+
+<h2 style='margin-left:0cm'>Eğerki derlemede bir hata olursa</h2>
+
+</div>
+
+<p class=MsoNoSpacing style='margin-left:36.0pt;text-indent:-18.0pt'>1.<span
+style='font:7.0pt "Times New Roman"'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span><a
+href="http://www.nobetciyazilim.com/graphics/ilk_penceremiz.rar">Bu bağlantıdan</a>
+örnek projeyi indirin.</p>
+
+</div>
+
+</body>
+
+</html>

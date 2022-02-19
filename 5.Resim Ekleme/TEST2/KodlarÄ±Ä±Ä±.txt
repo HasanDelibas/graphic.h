@@ -1,0 +1,139 @@
+Private Sub Command1_Click()
+Form2.Show
+End Sub
+
+Private Sub Command2_Click()
+On Error Resume Next
+Dim En, Boy As Integer      'En boy oraný
+Dim dU, yX, yY As Double    'Uzunluk ve yeni noktalar
+Dim alfa As Double          ' Açý
+Dim COSB As Double
+Dim SINB As Double
+Dim X As Integer
+Dim Y As Integer
+Dim R1 As Long
+Dim R2 As Long
+
+En = Nesne.ScaleWidth
+Boy = Nesne.ScaleHeight
+
+alfa = Text1.Text
+
+dU = U(0, 0, En, Boy)
+
+
+COSB = En / dU
+SINB = Boy / dU
+
+Çizim.Cls
+List1.Clear
+For i = 0 To 12
+alfa = i * 6.283 / 12
+'List1.AddItem -(Sin(alfa) * COSB + Cos(alfa) * SINB) '* dU / 2 & " To " & (Sin(alfa) * COSB + Cos(alfa) * SINB) * dU / 2
+'List1.AddItem -(Sin(alfa) * COSB + Cos(alfa) * SINB) * dU / 2
+For X = -(COSB * Cos(alfa) + SINB * Sin(alfa)) * dU / 2 To (COSB * Cos(alfa) + SINB * Sin(alfa)) * dU / 2
+    For Y = -(Sin(alfa) * COSB + Cos(alfa) * SINB) * dU / 2 To (Sin(alfa) * COSB + Cos(alfa) * SINB) * dU / 2
+        yX = Cos(alfa) * X - Sin(alfa) * Y
+        yY = Sin(alfa) * X + Cos(alfa) * Y
+        If yX < En \ 2 And yX > -En \ 2 And yY < Boy \ 2 And yY > -Boy \ 2 Then
+            ' Renk Düzeni Yapma Ksmý
+        'Çizim.ForeColor = RenkKýsmý(yX + En \ 2, yY + Boy \ 2)
+                        
+                        
+                        
+        Çizim.ForeColor = Nesne.Point(yX + En \ 2, yY + Boy \ 2)
+        Çizim.PSet (X + i * dU + En \ 2, Y + dU / 2)
+        'List1.AddItem "x: " & X + En \ 2 & " y: " & Y + Boy \ 2 & " yx: " & yX + En \ 2 & " yy: " & yY + Boy \ 2
+        End If
+        
+    Next
+Next
+Next
+End Sub
+Function RenkKýsmý(yX As Double, yY As Double) As Long
+Dim A, B, Bölge
+A = yX - (yX \ 1)
+B = yY - (yY \ 1)
+If A < 0 Then A = A + 1
+If B < 0 Then B = B + 1
+Bölge = 0
+List1.AddItem A & " - " & B
+
+If A <= B And A <= 1 - B Then
+RenkKýsmý = RenkArasý(Nesne.Point(yX \ 1, yY \ 1), Nesne.Point(yX \ 1, yY \ 1 + 1), B, 1)
+End If
+
+If A >= B And A <= 1 - B Then
+RenkKýsmý = RenkArasý(Nesne.Point(yX \ 1, yY \ 1), Nesne.Point(yX \ 1 + 1, yY \ 1), A, 1)
+End If
+
+If A >= B And A >= 1 - B Then
+RenkKýsmý = RenkArasý(Nesne.Point(yX \ 1 + 1, yY \ 1), Nesne.Point(yX \ 1 + 1, yY \ 1 + 1), B, 1)
+End If
+
+If A <= B And A >= 1 - B Then
+RenkKýsmý = RenkArasý(Nesne.Point(yX \ 1, yY \ 1 + 1), Nesne.Point(yX \ 1 + 1, yY \ 1 + 1), A, 1)
+End If
+
+
+
+
+End Function
+
+
+' ---------------------RENK AYARLARI
+
+Function RenkArasý(R1, R2, Oran, Bölüm)
+Dim R, G, B As Integer
+'On Error Resume Next
+If RK(R1) < RK(R2) Then
+R = Int(RK(R1) + ((RK(R2) - RK(R1)) / Bölüm) * Oran)
+Else
+R = Int(RK(R2) + ((RK(R1) - RK(R2)) / Bölüm) * Oran)
+End If
+
+If RY(R1) < RY(R2) Then
+G = Int(RY(R1) + ((RY(R2) - RY(R1)) / Bölüm) * Oran)
+Else
+G = Int(RY(R2) + ((RY(R1) - RY(R2)) / Bölüm) * Oran)
+End If
+
+If RM(R1) < RM(R2) Then
+B = Int(RM(R1) + ((RM(R2) - RM(R1)) / Bölüm) * Oran)
+Else
+B = Int(RM(R2) + ((RM(R1) - RM(R2)) / Bölüm) * Oran)
+End If
+If B < 0 Then B = 0
+If G < 0 Then G = 0
+If R < 0 Then R = 0
+
+RenkArasý = RGB(R, G, B)
+End Function
+
+Function RK(R)
+RK = (R Mod 256)
+End Function
+
+Function RY(R)
+RY = Val((R - RM(R) * 65536 - RK(R)) / 256)
+End Function
+
+Function RM(R)
+RM = Int(R / (65536))
+End Function
+'Matmatik Kýsmý
+Function U(X1, Y1, x2, y2) As Double
+U = Sqr((X1 - x2) ^ 2 + (Y1 - y2) ^ 2)
+End Function
+
+
+
+Private Sub Command3_Click()
+For Y = 0 To 100
+    For X = 0 To 100
+        ÇizimA.ForeColor = RGB((RK(Çizim.Point(X, Y)) * 3 + RK(Çizim.Point(X, Y + 1)) + RK(Çizim.Point(X + 1, Y)) + RK(Çizim.Point(X + 1, Y + 1))) / 6, (RY(Çizim.Point(X, Y)) * 3 + RY(Çizim.Point(X, Y + 1)) + RY(Çizim.Point(X + 1, Y)) + RY(Çizim.Point(X + 1, Y + 1))) / 6, (RM(Çizim.Point(X, Y)) * 3 + RM(Çizim.Point(X, Y + 1)) + RM(Çizim.Point(X + 1, Y)) + RM(Çizim.Point(X + 1, Y + 1))) / 6)
+        
+        ÇizimA.PSet (X, Y)
+    Next
+Next
+End Sub
